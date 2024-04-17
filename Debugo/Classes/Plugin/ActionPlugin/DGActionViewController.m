@@ -69,65 +69,35 @@
         // 赋值
         NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGActionPlugin.shared.usersActionsDic.mutableCopy;
         
-        if (Debugo.sortUserComparator) {//自定义排序
-            NSArray *sortedKeys = [usersActionsDic.allKeys sortedArrayUsingComparator:Debugo.sortUserComparator];
-            [sortedKeys enumerateObjectsUsingBlock:^(NSString *_Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
-                DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj = usersActionsDic[key];
-                if (dg_current_user().length && [key isEqualToString:dg_current_user()]) {
-                    // current
-                    currentActions = obj.reverseSortedValues;
-                }else {
-                    // other
-                    static NSArray <NSString *>*_persons = nil;
-                    static NSMutableDictionary *_cachedPersonsDic = nil;
-                    static dispatch_once_t onceToken;
-                    dispatch_once(&onceToken, ^{
-                        _persons = @[@"👮‍♀️", @"👷🏿‍♀️", @"💂🏽‍♀️", @"👨🏽‍🌾", @"👨🏻‍🍳", @"🕵🏾‍♂️", @"👩🏽‍🏭", @"👨🏼‍💻", @"👩🏾‍🏫", @"👩🏻‍💻", @"🧝‍♀️", @"🧜🏾‍♀️", @"🤦🏼‍♀️", @"🤷🏻‍♂️", @"🙆🏼‍♂️", @"🙇🏿‍♂️", @"🧜🏿‍♂️", @"👩‍🚒"];
-                        _cachedPersonsDic = [NSMutableDictionary dictionary];
-                    });
-                    NSString *title = [_cachedPersonsDic objectForKey:key];
-                    if (!title.length) {
-                        title = [_persons[arc4random()%_persons.count] stringByAppendingFormat:@" %@", key];
-                        [_cachedPersonsDic setObject:title forKey:key];
-                    }
-                    DGAction *action = [DGAction actionWithTitle:title autoClose:NO handler:^(DGAction * _Nonnull action) {
-                        DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_extStrongObj];
-                        subVC.title = action.title;
-                        [action.viewController.navigationController pushViewController:subVC animated:YES];
-                    }];
-                    action.dg_extStrongObj = obj.reverseSortedValues;
-                    [otherActions addObject:action];
+        NSArray *sortedKeys = [usersActionsDic.allKeys sortedArrayUsingComparator:Debugo.sortUserComparator];
+        [sortedKeys enumerateObjectsUsingBlock:^(NSString *_Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+            DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj = usersActionsDic[key];
+            if (dg_current_user().length && [key isEqualToString:dg_current_user()]) {
+                // current
+                currentActions = obj.reverseSortedValues;
+            }else {
+                // other
+                static NSArray <NSString *>*_persons = nil;
+                static NSMutableDictionary *_cachedPersonsDic = nil;
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    _persons = @[@"👮‍♀️", @"👷🏿‍♀️", @"💂🏽‍♀️", @"👨🏽‍🌾", @"👨🏻‍🍳", @"🕵🏾‍♂️", @"👩🏽‍🏭", @"👨🏼‍💻", @"👩🏾‍🏫", @"👩🏻‍💻", @"🧝‍♀️", @"🧜🏾‍♀️", @"🤦🏼‍♀️", @"🤷🏻‍♂️", @"🙆🏼‍♂️", @"🙇🏿‍♂️", @"🧜🏿‍♂️", @"👩‍🚒"];
+                    _cachedPersonsDic = [NSMutableDictionary dictionary];
+                });
+                NSString *title = [_cachedPersonsDic objectForKey:key];
+                if (!title.length) {
+                    title = [_persons[arc4random()%_persons.count] stringByAppendingFormat:@" %@", key];
+                    [_cachedPersonsDic setObject:title forKey:key];
                 }
-            }];
-        } else {
-            [usersActionsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj, BOOL * _Nonnull stop) {
-                if (dg_current_user().length && [key isEqualToString:dg_current_user()]) {
-                    // current
-                    currentActions = obj.reverseSortedValues;
-                }else {
-                    // other
-                    static NSArray <NSString *>*_persons = nil;
-                    static NSMutableDictionary *_cachedPersonsDic = nil;
-                    static dispatch_once_t onceToken;
-                    dispatch_once(&onceToken, ^{
-                        _persons = @[@"👮‍♀️", @"👷🏿‍♀️", @"💂🏽‍♀️", @"👨🏽‍🌾", @"👨🏻‍🍳", @"🕵🏾‍♂️", @"👩🏽‍🏭", @"👨🏼‍💻", @"👩🏾‍🏫", @"👩🏻‍💻", @"🧝‍♀️", @"🧜🏾‍♀️", @"🤦🏼‍♀️", @"🤷🏻‍♂️", @"🙆🏼‍♂️", @"🙇🏿‍♂️", @"🧜🏿‍♂️", @"👩‍🚒"];
-                        _cachedPersonsDic = [NSMutableDictionary dictionary];
-                    });
-                    NSString *title = [_cachedPersonsDic objectForKey:key];
-                    if (!title.length) {
-                        title = [_persons[arc4random()%_persons.count] stringByAppendingFormat:@" %@", key];
-                        [_cachedPersonsDic setObject:title forKey:key];
-                    }
-                    DGAction *action = [DGAction actionWithTitle:title autoClose:NO handler:^(DGAction * _Nonnull action) {
-                        DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_extStrongObj];
-                        subVC.title = action.title;
-                        [action.viewController.navigationController pushViewController:subVC animated:YES];
-                    }];
-                    action.dg_extStrongObj = obj.reverseSortedValues;
-                    [otherActions addObject:action];
-                }
-            }];
-        }
+                DGAction *action = [DGAction actionWithTitle:title autoClose:NO handler:^(DGAction * _Nonnull action) {
+                    DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_extStrongObj];
+                    subVC.title = action.title;
+                    [action.viewController.navigationController pushViewController:subVC animated:YES];
+                }];
+                action.dg_extStrongObj = obj.reverseSortedValues;
+                [otherActions addObject:action];
+            }
+        }];
         
         /**
          经实践，最方便的指令展示规则如下

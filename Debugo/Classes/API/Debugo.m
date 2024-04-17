@@ -58,7 +58,9 @@ static BOOL _enabled = NO;
     return _enabled;
 }
 
-static NSComparisonResult (^_sortUserComparator)(id obj1, id obj2);
+static NSComparisonResult (^_sortUserComparator)(id obj1, id obj2) = ^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+    return obj1 < obj2;
+};
 + (void)setSortUserComparator:(NSComparisonResult (^)(id _Nonnull, id _Nonnull))sortUserComparator {
     _sortUserComparator = sortUserComparator;
 }

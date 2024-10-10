@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23B003E62BCF72C6004F97E6 /* DGLogPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B003E52BCF72C6004F97E6 /* DGLogPlugin.m */; };
+		23B003E92BCF7B33004F97E6 /* DGLogPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B003E72BCF7B33004F97E6 /* DGLogPluginConfiguration.m */; };
+		23B003EC2BCF7CA4004F97E6 /* DGLogTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B003EB2BCF7CA4004F97E6 /* DGLogTypeModel.m */; };
+		23B003EF2BCF7D7F004F97E6 /* DGTypeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B003EE2BCF7D7F004F97E6 /* DGTypeListViewController.m */; };
+		23B003F22BCF9EEB004F97E6 /* DGLogBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B003F12BCF9EEB004F97E6 /* DGLogBackViewController.m */; };
+		23B003F52BCFB468004F97E6 /* DGLogWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B003F32BCFB468004F97E6 /* DGLogWindow.m */; };
+		6FF96A252CB6AC020057400D /* DGTypeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96A242CB6AC020057400D /* DGTypeListCell.m */; };
 		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
 		C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D3FD232E634500974DE8 /* CustomPlugin.m */; };
 		C901D401232E63D300974DE8 /* CustomPlugin2.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D400232E63D300974DE8 /* CustomPlugin2.m */; };
@@ -107,7 +114,21 @@
 
 /* Begin PBXFileReference section */
 		21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
+		23B003E42BCF72C6004F97E6 /* DGLogPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGLogPlugin.h; sourceTree = "<group>"; };
+		23B003E52BCF72C6004F97E6 /* DGLogPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGLogPlugin.m; sourceTree = "<group>"; };
+		23B003E72BCF7B33004F97E6 /* DGLogPluginConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLogPluginConfiguration.m; sourceTree = "<group>"; };
+		23B003E82BCF7B33004F97E6 /* DGLogPluginConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLogPluginConfiguration.h; sourceTree = "<group>"; };
+		23B003EA2BCF7CA4004F97E6 /* DGLogTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLogTypeModel.h; sourceTree = "<group>"; };
+		23B003EB2BCF7CA4004F97E6 /* DGLogTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLogTypeModel.m; sourceTree = "<group>"; };
+		23B003ED2BCF7D7F004F97E6 /* DGTypeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTypeListViewController.h; sourceTree = "<group>"; };
+		23B003EE2BCF7D7F004F97E6 /* DGTypeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTypeListViewController.m; sourceTree = "<group>"; };
+		23B003F02BCF9EEB004F97E6 /* DGLogBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLogBackViewController.h; sourceTree = "<group>"; };
+		23B003F12BCF9EEB004F97E6 /* DGLogBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLogBackViewController.m; sourceTree = "<group>"; };
+		23B003F32BCFB468004F97E6 /* DGLogWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLogWindow.m; sourceTree = "<group>"; };
+		23B003F42BCFB468004F97E6 /* DGLogWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLogWindow.h; sourceTree = "<group>"; };
 		5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
+		6FF96A232CB6AC020057400D /* DGTypeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTypeListCell.h; sourceTree = "<group>"; };
+		6FF96A242CB6AC020057400D /* DGTypeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTypeListCell.m; sourceTree = "<group>"; };
 		926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Debugo-Example-ObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C901D3FC232E634500974DE8 /* CustomPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPlugin.h; sourceTree = "<group>"; };
 		C901D3FD232E634500974DE8 /* CustomPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPlugin.m; sourceTree = "<group>"; };
@@ -314,6 +335,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23B003E32BCF7290004F97E6 /* LogPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				23B003E42BCF72C6004F97E6 /* DGLogPlugin.h */,
+				23B003E52BCF72C6004F97E6 /* DGLogPlugin.m */,
+				23B003F42BCFB468004F97E6 /* DGLogWindow.h */,
+				23B003F32BCFB468004F97E6 /* DGLogWindow.m */,
+				23B003E82BCF7B33004F97E6 /* DGLogPluginConfiguration.h */,
+				23B003E72BCF7B33004F97E6 /* DGLogPluginConfiguration.m */,
+				23B003EA2BCF7CA4004F97E6 /* DGLogTypeModel.h */,
+				23B003EB2BCF7CA4004F97E6 /* DGLogTypeModel.m */,
+				23B003F02BCF9EEB004F97E6 /* DGLogBackViewController.h */,
+				23B003F12BCF9EEB004F97E6 /* DGLogBackViewController.m */,
+				23B003ED2BCF7D7F004F97E6 /* DGTypeListViewController.h */,
+				23B003EE2BCF7D7F004F97E6 /* DGTypeListViewController.m */,
+				6FF96A232CB6AC020057400D /* DGTypeListCell.h */,
+				6FF96A242CB6AC020057400D /* DGTypeListCell.m */,
+			);
+			path = LogPlugin;
+			sourceTree = "<group>";
+		};
 		322E2CA4D88365927F22FB2C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +636,7 @@
 				C9B456EC221D2B460098644E /* TouchPlugin */,
 				C93A25C1233C5EF3008AEC18 /* ColorPlugin */,
 				C915FC502361899000189E8D /* PodPlugin */,
+				23B003E32BCF7290004F97E6 /* LogPlugin */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -845,10 +888,12 @@
 				C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */,
 				C9B45645221D02A60098644E /* ViewController.m in Sources */,
 				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
+				23B003EF2BCF7D7F004F97E6 /* DGTypeListViewController.m in Sources */,
 				C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */,
 				C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */,
 				C915FC542361922200189E8D /* DGPodModel.m in Sources */,
 				C9B4570E221D2B460098644E /* DGPlister.m in Sources */,
+				23B003F22BCF9EEB004F97E6 /* DGLogBackViewController.m in Sources */,
 				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
 				C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */,
 				C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */,
@@ -861,6 +906,7 @@
 				C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
 				C9A2562D23628D7500E6B3FA /* DGSpecRepoModel.m in Sources */,
+				23B003EC2BCF7CA4004F97E6 /* DGLogTypeModel.m in Sources */,
 				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
 				C9B45711221D2B460098644E /* DGApplePlugin.m in Sources */,
 				C9B45713221D2B460098644E /* DGWindow.m in Sources */,
@@ -882,6 +928,7 @@
 				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
 				C9B45703221D2B460098644E /* DGActionViewController.m in Sources */,
 				C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */,
+				23B003F52BCFB468004F97E6 /* DGLogWindow.m in Sources */,
 				C9BB4269232CB2AE00095F7E /* DGFileTableViewCell.m in Sources */,
 				C9B4571B221D2B460098644E /* DGFolderPreviewViewController.m in Sources */,
 				C9C210A822A110DE00D5EEDE /* DGAccountPlugin.m in Sources */,
@@ -889,12 +936,14 @@
 				C9B45650221D02A70098644E /* main.m in Sources */,
 				C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */,
 				C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */,
+				23B003E92BCF7B33004F97E6 /* DGLogPluginConfiguration.m in Sources */,
 				C9B456F9221D2B460098644E /* Debugo.m in Sources */,
 				C9F92C6C2326637200B8F882 /* DGPlugin.m in Sources */,
 				C9C210A222A10A8300D5EEDE /* DGActionPlugin.m in Sources */,
 				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,
 				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
 				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,
+				6FF96A252CB6AC020057400D /* DGTypeListCell.m in Sources */,
 				C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */,
 				C928D755233B64D20078202B /* UIControl+Debugo.m in Sources */,
 				C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */,
@@ -916,6 +965,7 @@
 				C9034DED2324F0D5003D8984 /* DGPluginGridViewController.m in Sources */,
 				C9F92C6F2326672A00B8F882 /* DGAppInfoPlugin.m in Sources */,
 				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
+				23B003E62BCF72C6004F97E6 /* DGLogPlugin.m in Sources */,
 				C9A2564B2362FD8600E6B3FA /* DGPodPluginConfiguration.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
 				C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */,

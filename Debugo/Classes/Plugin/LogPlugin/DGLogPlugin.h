@@ -24,6 +24,7 @@ UIKIT_EXTERN NSString *const DebugoLogWindowNotification;
 
 + (instancetype)shared;
 
+@property (nonatomic, strong, readonly) NSMutableArray <DGLogTypeModel *>*arrayM;
 - (void)addTypeModel:(DGLogTypeModel *)typeModel;
 
 @end

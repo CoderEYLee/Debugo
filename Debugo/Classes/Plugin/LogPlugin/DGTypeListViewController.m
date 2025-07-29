@@ -50,6 +50,7 @@
 }
 
 - (void)clear {
+    [DGLogPlugin.shared.arrayM removeAllObjects];
     [self.dataArray removeAllObjects];
     [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointZero animated:NO];
@@ -87,6 +88,7 @@
 - (NSMutableArray<DGLogTypeModel *> *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
+        [_dataArray addObjectsFromArray:DGLogPlugin.shared.arrayM];
     }
     return _dataArray;
 }

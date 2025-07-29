@@ -15,6 +15,7 @@ NSString *const DebugoLogWindowNotification=@"DebugoLogWindowNotification";
 @interface DGLogPlugin()
 
 @property (nonatomic, strong, nullable) DGLogWindow *logWindow;
+@property (nonatomic, strong, readwrite) NSMutableArray <DGLogTypeModel *>*arrayM;
 
 @end
 
@@ -85,7 +86,17 @@ static DGLogPlugin *_instance;
     if (nil == typeModel) {
         return;
     }
+    
+    [self.arrayM addObject:typeModel];
     [NSNotificationCenter.defaultCenter postNotificationName:DebugoLogWindowNotification object:self userInfo:@{@"typeModel": typeModel}];
+}
+
+// MARK: - 懒加载
+- (NSMutableArray<DGLogTypeModel *> *)arrayM {
+    if (nil == _arrayM) {
+        _arrayM = [NSMutableArray array];
+    }
+    return _arrayM;
 }
 
 @end

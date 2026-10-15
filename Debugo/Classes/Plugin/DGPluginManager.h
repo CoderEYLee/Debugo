@@ -15,6 +15,7 @@
 #import "DGTouchPlugin.h"
 #import "DGColorPlugin.h"
 #import "DGPodPlugin.h"
+#import "DGNetworkPlugin.h"
 #import "DGLogPlugin.h"
 
 NS_ASSUME_NONNULL_BEGIN

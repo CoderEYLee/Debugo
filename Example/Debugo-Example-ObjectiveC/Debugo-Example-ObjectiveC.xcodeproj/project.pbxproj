@@ -14,6 +14,12 @@
 		6F9C79A52CB8C53B00C7E967 /* DGLogBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C79932CB8C53B00C7E967 /* DGLogBackViewController.m */; };
 		6F9C79A62CB8C53B00C7E967 /* DGLogWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C799B2CB8C53B00C7E967 /* DGLogWindow.m */; };
 		6F9C79A72CB8C53B00C7E967 /* DGLogTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C79992CB8C53B00C7E967 /* DGLogTypeModel.m */; };
+		A7E000020000000000000002 /* DGNetworkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E000010000000000000002 /* DGNetworkCell.m */; };
+		A7E000020000000000000004 /* DGNetworkCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E000010000000000000004 /* DGNetworkCenter.m */; };
+		A7E000020000000000000006 /* DGNetworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E000010000000000000006 /* DGNetworkDetailViewController.m */; };
+		A7E000020000000000000009 /* DGNetworkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E000010000000000000009 /* DGNetworkListViewController.m */; };
+		A7E00002000000000000000B /* DGNetworkPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E00001000000000000000B /* DGNetworkPlugin.m */; };
+		A7E00002000000000000000D /* DGNetworkRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E00001000000000000000D /* DGNetworkRecord.m */; };
 		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
 		C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D3FD232E634500974DE8 /* CustomPlugin.m */; };
 		C901D401232E63D300974DE8 /* CustomPlugin2.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D400232E63D300974DE8 /* CustomPlugin2.m */; };
@@ -48,6 +54,7 @@
 		C9A2564B2362FD8600E6B3FA /* DGPodPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2564A2362FD8600E6B3FA /* DGPodPluginConfiguration.m */; };
 		C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */; };
 		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
+		A7E0000200000000000000E1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E0000100000000000000E2 /* SceneDelegate.m */; };
 		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
 		C9B45648221D02A60098644E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B45646221D02A60098644E /* Main.storyboard */; };
 		C9B4564A221D02A70098644E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B45649221D02A70098644E /* Assets.xcassets */; };
@@ -115,6 +122,19 @@
 /* Begin PBXFileReference section */
 		21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
 		5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
+		A7E000010000000000000001 /* DGNetworkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGNetworkCell.h; sourceTree = "<group>"; };
+		A7E000010000000000000002 /* DGNetworkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGNetworkCell.m; sourceTree = "<group>"; };
+		A7E000010000000000000003 /* DGNetworkCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGNetworkCenter.h; sourceTree = "<group>"; };
+		A7E000010000000000000004 /* DGNetworkCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGNetworkCenter.m; sourceTree = "<group>"; };
+		A7E000010000000000000005 /* DGNetworkDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGNetworkDetailViewController.h; sourceTree = "<group>"; };
+		A7E000010000000000000006 /* DGNetworkDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGNetworkDetailViewController.m; sourceTree = "<group>"; };
+		A7E000010000000000000007 /* DGNetworkLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGNetworkLayout.h; sourceTree = "<group>"; };
+		A7E000010000000000000008 /* DGNetworkListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGNetworkListViewController.h; sourceTree = "<group>"; };
+		A7E000010000000000000009 /* DGNetworkListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGNetworkListViewController.m; sourceTree = "<group>"; };
+		A7E00001000000000000000A /* DGNetworkPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGNetworkPlugin.h; sourceTree = "<group>"; };
+		A7E00001000000000000000B /* DGNetworkPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGNetworkPlugin.m; sourceTree = "<group>"; };
+		A7E00001000000000000000C /* DGNetworkRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGNetworkRecord.h; sourceTree = "<group>"; };
+		A7E00001000000000000000D /* DGNetworkRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGNetworkRecord.m; sourceTree = "<group>"; };
 		6F9C79922CB8C53B00C7E967 /* DGLogBackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGLogBackViewController.h; sourceTree = "<group>"; };
 		6F9C79932CB8C53B00C7E967 /* DGLogBackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGLogBackViewController.m; sourceTree = "<group>"; };
 		6F9C79942CB8C53B00C7E967 /* DGLogPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGLogPlugin.h; sourceTree = "<group>"; };
@@ -196,6 +216,8 @@
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B45640221D02A60098644E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9B45641221D02A60098644E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A7E0000100000000000000E1 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		A7E0000100000000000000E2 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		C9B45643221D02A60098644E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C9B45644221D02A60098644E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9B45647221D02A60098644E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -342,6 +364,26 @@
 				5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A7E0000F0000000000000001 /* NetworkPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				A7E000010000000000000001 /* DGNetworkCell.h */,
+				A7E000010000000000000002 /* DGNetworkCell.m */,
+				A7E000010000000000000003 /* DGNetworkCenter.h */,
+				A7E000010000000000000004 /* DGNetworkCenter.m */,
+				A7E000010000000000000005 /* DGNetworkDetailViewController.h */,
+				A7E000010000000000000006 /* DGNetworkDetailViewController.m */,
+				A7E000010000000000000007 /* DGNetworkLayout.h */,
+				A7E000010000000000000008 /* DGNetworkListViewController.h */,
+				A7E000010000000000000009 /* DGNetworkListViewController.m */,
+				A7E00001000000000000000A /* DGNetworkPlugin.h */,
+				A7E00001000000000000000B /* DGNetworkPlugin.m */,
+				A7E00001000000000000000C /* DGNetworkRecord.h */,
+				A7E00001000000000000000D /* DGNetworkRecord.m */,
+			);
+			path = NetworkPlugin;
 			sourceTree = "<group>";
 		};
 		6F9C79A02CB8C53B00C7E967 /* LogPlugin */ = {
@@ -543,6 +585,8 @@
 				C9B4565A221D29230098644E /* Login */,
 				C9B45640221D02A60098644E /* AppDelegate.h */,
 				C9B45641221D02A60098644E /* AppDelegate.m */,
+				A7E0000100000000000000E1 /* SceneDelegate.h */,
+				A7E0000100000000000000E2 /* SceneDelegate.m */,
 				C9B45643221D02A60098644E /* ViewController.h */,
 				C9B45644221D02A60098644E /* ViewController.m */,
 				C9B45658221D069B0098644E /* UIView+IB.h */,
@@ -637,6 +681,7 @@
 				C93A25C1233C5EF3008AEC18 /* ColorPlugin */,
 				C915FC502361899000189E8D /* PodPlugin */,
 				6F9C79A02CB8C53B00C7E967 /* LogPlugin */,
+				A7E0000F0000000000000001 /* NetworkPlugin */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -945,6 +990,7 @@
 				C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */,
 				C9B4571D221D2B460098644E /* DGDatabaseLeftTableViewCell.m in Sources */,
 				C9B45642221D02A60098644E /* AppDelegate.m in Sources */,
+				A7E0000200000000000000E1 /* SceneDelegate.m in Sources */,
 				C9B45706221D2B460098644E /* DGFileViewController.m in Sources */,
 				C9B4571A221D2B460098644E /* DGFile.m in Sources */,
 				C9B45707221D2B460098644E /* DGAccountBackViewController.m in Sources */,
@@ -969,6 +1015,12 @@
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
 				C9A25638236299F300E6B3FA /* DGPodPluginViewController.m in Sources */,
 				6F9C79A12CB8C53B00C7E967 /* DGLogPlugin.m in Sources */,
+				A7E000020000000000000002 /* DGNetworkCell.m in Sources */,
+				A7E000020000000000000004 /* DGNetworkCenter.m in Sources */,
+				A7E000020000000000000006 /* DGNetworkDetailViewController.m in Sources */,
+				A7E000020000000000000009 /* DGNetworkListViewController.m in Sources */,
+				A7E00002000000000000000B /* DGNetworkPlugin.m in Sources */,
+				A7E00002000000000000000D /* DGNetworkRecord.m in Sources */,
 				6F9C79A22CB8C53B00C7E967 /* DGTypeListCell.m in Sources */,
 				6F9C79A32CB8C53B00C7E967 /* DGTypeListViewController.m in Sources */,
 				6F9C79A42CB8C53B00C7E967 /* DGLogPluginConfiguration.m in Sources */,
@@ -1056,7 +1108,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1109,7 +1161,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1124,10 +1176,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6YUSQQ2Y3G;
+				DEVELOPMENT_TEAM = PYJ3M9TJFN;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
 				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1146,10 +1198,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6YUSQQ2Y3G;
+				DEVELOPMENT_TEAM = PYJ3M9TJFN;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
 				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

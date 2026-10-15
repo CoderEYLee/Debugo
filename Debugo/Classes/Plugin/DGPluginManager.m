@@ -67,6 +67,7 @@ static DGPluginManager *_instance;
             DGTouchPlugin.class,
             DGColorPlugin.class,
             DGPodPlugin.class,
+            DGNetworkPlugin.class,
             DGLogPlugin.class,
         ];
     }

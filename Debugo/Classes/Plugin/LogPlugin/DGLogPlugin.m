@@ -21,6 +21,13 @@ NSString *const DebugoLogWindowNotification=@"DebugoLogWindowNotification";
 
 @implementation DGLogPlugin
 
++ (UIImage *)pluginImage {
+    UIImageSymbolConfiguration *configuration = [UIImageSymbolConfiguration configurationWithPointSize:34 weight:UIImageSymbolWeightRegular];
+    UIImage *image = [UIImage systemImageNamed:@"text.alignleft" withConfiguration:configuration];
+    UIColor *color = [UIColor colorWithRed:255 / 255.0 green:149 / 255.0 blue:0 alpha:1];
+    return [image imageWithTintColor:color renderingMode:UIImageRenderingModeAlwaysOriginal];
+}
+
 + (NSString *)pluginName {
     return @"Log日志";
 }

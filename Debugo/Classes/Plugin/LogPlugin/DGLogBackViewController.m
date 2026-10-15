@@ -13,12 +13,14 @@
 #import "DGLogPlugin.h"
 #import "DGAnimationDelegate.h"
 
-#define kBottomMargin (100.0 + kDGBottomSafeMargin)
-#define kLeftMargin 10
+static CGFloat const kDGLogCardInset = 18.0;
+static CGFloat const kDGLogCardRadius = 16.0;
 
 @interface DGLogBackViewController ()
 
 @property (nonatomic, weak) UIView *contentView;
+@property (nonatomic, strong) UIView *shadowView;
+@property (nonatomic, assign) BOOL dismissing;
 
 @end
 
@@ -29,37 +31,56 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
+    UIView *shadowView = [[UIView alloc] init];
+    shadowView.backgroundColor = [UIColor whiteColor];
+    shadowView.layer.cornerRadius = kDGLogCardRadius;
+    shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    shadowView.layer.shadowOpacity = 0.18;
+    shadowView.layer.shadowRadius = 12;
+    shadowView.layer.shadowOffset = CGSizeMake(0, 6);
+    [self.view addSubview:shadowView];
+    self.shadowView = shadowView;
+    
     DGNavigationController *navVC = [[DGNavigationController alloc] initWithRootViewController:[DGTypeListViewController new]];
-    navVC.view.frame = CGRectMake(kLeftMargin,
-                                  kDGScreenH,
-                                  [UIScreen mainScreen].bounds.size.width - 2 * kLeftMargin,
-                                  300);
+    navVC.view.backgroundColor = [UIColor whiteColor];
     navVC.view.clipsToBounds = YES;
+    navVC.view.layer.cornerRadius = kDGLogCardRadius;
     [self addChildViewController:navVC];
     [self.view addSubview:navVC.view];
     self.contentView = navVC.view;
-    
-    [UIView animateWithDuration:.2 animations:^{
-        self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.1];
-        self.contentView.dg_y = 0;
-    }];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (self.dismissing) {
+        return;
+    }
+    CGRect card = [self cardFrame];
+    self.shadowView.frame = card;
+    self.contentView.frame = card;
+    self.shadowView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.shadowView.bounds cornerRadius:kDGLogCardRadius].CGPath;
+}
+
+- (CGRect)cardFrame {
+    return CGRectInset(self.view.bounds, kDGLogCardInset, kDGLogCardInset);
 }
 
 - (void)refreshHeight:(CGFloat)height {
     if (nil == self.contentView) {
         return;
     }
-    
-    self.contentView.dg_height = height - 40;
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
-    
-    self.contentView.layer.cornerRadius = 13.0;
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
 }
 
 - (void)dismissWithAnimation:(void (^)(void))completion {
+    self.dismissing = YES;
     [UIView animateWithDuration:.2 animations:^{
-        self.contentView.dg_y = kDGScreenH;
+        CGRect frame = self.contentView.frame;
+        frame.origin.y = CGRectGetHeight(self.view.bounds);
+        self.contentView.frame = frame;
+        self.shadowView.frame = frame;
+        self.shadowView.alpha = 0;
     } completion:^(BOOL finished) {
         if (completion) {
             completion();

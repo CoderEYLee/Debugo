@@ -21,6 +21,9 @@
 /// 变小
 - (void)growDownHeight;
 
+/// 头部拖拽
+- (void)handlePanGesture:(UIPanGestureRecognizer *)pan;
+
 @end
 
 

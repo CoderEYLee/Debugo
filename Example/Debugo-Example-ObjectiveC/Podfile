@@ -15,6 +15,7 @@ post_install do |installer|
   end
 
   # AFNetworking 4.0.1 导入了一个较新 Xcode 视为私有的头文件。
+  # 把对应的头文件删除一下
   Dir.glob(File.join(installer.sandbox.root, 'AFNetworking/AFNetworking/*.m')).each do |file|
     contents = File.read(file)
     next unless contents.include?('#import <netinet6/in6.h>')

@@ -12,14 +12,16 @@
 #import "DGCommon.h"
 #import "DGLogBackViewController.h"
 
-#define DGLogWindowIsIPhoneX ([[UIScreen mainScreen] nativeBounds].size.height >= 2436.0)
-#define DGLogWindowTopMargin (DGLogWindowIsIPhoneX ? 88.0 : 64.0)
-#define DGLogWindowBottomMargin (DGLogWindowIsIPhoneX ? 83.0 : 49.0)
+#define DGLogWindowTopMargin (dg_mainWindow().safeAreaInsets.top + 44.0)
+#define DGLogWindowBottomMargin (dg_mainWindow().safeAreaInsets.bottom + 49.0)
+#define DGLogWindowMinHeight 100.0
+#define DGLogWindowHeightStep 30.0
 
 @interface DGLogWindow()
 
 @property (nonatomic, weak) UIView *contentView;
 @property (nonatomic, assign) BOOL isDragging;
+@property (nonatomic, assign) CGPoint panStartCenter;
 @property (nonatomic, copy) NSString *memoryAddressKey;
 
 @end
@@ -40,10 +42,10 @@
     
     if(self = [super initWithFrame:frame]) {
         self.windowLevel = 1000000;
+        self.backgroundColor = [UIColor clearColor];
+        self.opaque = NO;
         // rootViewController
         self.rootViewController = [[DGLogBackViewController alloc] init];
-        
-        [self setupUI];
     }
     return self;
 }
@@ -60,44 +62,25 @@
     }
 }
 
-- (void)setupUI {
-    // pan
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-    [self.contentView addGestureRecognizer:pan];
-}
-
 /// 变大
 - (void)growUpHeight {
-    CGFloat minH = 100;
-    CGFloat maxH = UIScreen.mainScreen.bounds.size.height - DGLogWindowTopMargin - DGLogWindowBottomMargin;
-    CGFloat height = self.dg_height;
-    height += 30;
-    if (height > maxH) {
-        height = maxH;
-    }
-    
-    if (height < minH) {
-        height = minH;
-    }
-    
-    self.dg_height = height;
+    [self changeHeightBy:DGLogWindowHeightStep];
 }
 
 /// 变小
 - (void)growDownHeight {
-    CGFloat minH = 100;
+    [self changeHeightBy:-DGLogWindowHeightStep];
+}
+
+- (void)changeHeightBy:(CGFloat)delta {
     CGFloat maxH = UIScreen.mainScreen.bounds.size.height - DGLogWindowTopMargin - DGLogWindowBottomMargin;
-    CGFloat height = self.dg_height;
-    height -= 30;
-    if (height > maxH) {
-        height = maxH;
-    }
-    
-    if (height < minH) {
-        height = minH;
-    }
-    
-    self.dg_height = height;
+    CGFloat height = MAX(DGLogWindowMinHeight, MIN(maxH, self.dg_height + delta));
+    CGFloat w = self.frame.size.width;
+    CGPoint newCenter = [DGLogWindow checkNewCenterWithPoint:CGPointMake(self.center.x, self.frame.origin.y + height * 0.5) size:CGSizeMake(w, height)];
+    [UIView animateWithDuration:.2 animations:^{
+        self.frame = CGRectMake(newCenter.x - w * 0.5, newCenter.y - height * 0.5, w, height);
+        [self layoutIfNeeded];
+    }];
 }
 
 #pragma mark - getter
@@ -115,17 +98,41 @@
 #pragma mark - event response
 - (void)handlePanGesture:(UIPanGestureRecognizer*)p {
     UIWindow *appWindow = dg_mainWindow();
-    CGPoint panPoint = [p locationInView:appWindow];
+    // 窗口与屏幕等宽时只允许上下拖动
+    BOOL canMoveX = self.frame.size.width < UIScreen.mainScreen.bounds.size.width;
     
     if (p.state == UIGestureRecognizerStateBegan) {
+        [self.layer removeAllAnimations];
         self.isDragging = YES;
+        self.panStartCenter = self.center;
         self.contentView.alpha = 1;
     } else if (p.state == UIGestureRecognizerStateChanged) {
-        self.center = CGPointMake(panPoint.x, panPoint.y);
+        CGPoint translation = [p translationInView:appWindow];
+        CGPoint target = CGPointMake(self.panStartCenter.x + (canMoveX ? translation.x : 0),
+                                     self.panStartCenter.y + translation.y);
+        self.center = [self rubberBandCenterWithPoint:target];
     } else if (p.state == UIGestureRecognizerStateEnded
              || p.state == UIGestureRecognizerStateCancelled) {
-        CGPoint newCenter = [DGLogWindow checkNewCenterWithPoint:panPoint size:self.frame.size];
-        [UIView animateWithDuration:.25 animations:^{
+        CGPoint velocity = [p velocityInView:appWindow];
+        if (!canMoveX) {
+            velocity.x = 0;
+        }
+        // 按松手速度做惯性投射, 再吸附到合法区域
+        CGFloat decelerationFactor = 0.15;
+        CGPoint projected = CGPointMake(self.center.x + velocity.x * decelerationFactor,
+                                        self.center.y + velocity.y * decelerationFactor);
+        CGPoint newCenter = [DGLogWindow checkNewCenterWithPoint:projected size:self.frame.size];
+        
+        CGFloat distance = hypot(newCenter.x - self.center.x, newCenter.y - self.center.y);
+        CGFloat speed = hypot(velocity.x, velocity.y);
+        CGFloat springVelocity = distance > 1 ? MIN(speed / distance, 20) : 0;
+        
+        [UIView animateWithDuration:.4
+                              delay:0
+             usingSpringWithDamping:.85
+              initialSpringVelocity:springVelocity
+                            options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
             self.center = newCenter;
         } completion:^(BOOL finished) {
             self.isDragging = NO;
@@ -133,6 +140,18 @@
     } else {
         DGLog(@"%@ pan state : %zd", self, p.state);
     }
+}
+
+/// 超出可拖动区域时增加阻尼, 避免窗口被拖出屏幕
+- (CGPoint)rubberBandCenterWithPoint:(CGPoint)point {
+    CGPoint limit = [DGLogWindow checkNewCenterWithPoint:point size:self.frame.size];
+    CGFloat overflowY = point.y - limit.y;
+    if (fabs(overflowY) < 0.01) {
+        return CGPointMake(point.x, point.y);
+    }
+    CGFloat dimension = 100.0;
+    CGFloat resisted = (1.0 - 1.0 / (fabs(overflowY) * 0.55 / dimension + 1.0)) * dimension;
+    return CGPointMake(point.x, limit.y + (overflowY > 0 ? resisted : -resisted));
 }
 
 #pragma mark - private methods

@@ -7,8 +7,9 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 
-@interface DGTypeListViewController : UITableViewController
+@interface DGTypeListViewController : UIViewController
 
 @end

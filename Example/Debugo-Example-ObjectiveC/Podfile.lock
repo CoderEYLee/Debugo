@@ -14,23 +14,35 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
+  - Debugo (0.4.0):
+    - Debugo/Core (= 0.4.0)
+  - Debugo/Core (0.4.0):
+    - AFNetworking (>= 4.0.1)
+    - FMDB (>= 2.7.2)
+  - FMDB (2.7.12):
+    - FMDB/standard (= 2.7.12)
+  - FMDB/Core (2.7.12)
+  - FMDB/standard (2.7.12):
+    - FMDB/Core
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
-  - FMDB
+  - Debugo (from `../..`)
 
 SPEC REPOS:
   trunk:
     - AFNetworking
     - FMDB
 
+EXTERNAL SOURCES:
+  Debugo:
+    :path: "../.."
+
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  Debugo: ced751fb83d698b336787260af2216a13a3852ce
+  FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
 
-PODFILE CHECKSUM: ae42a586cdfadbbb48fe0aecfbd4f315f936b1e4
+PODFILE CHECKSUM: 653d306e9e7347d790f0571633434a2f4a6a3ffc
 
 COCOAPODS: 1.17.0

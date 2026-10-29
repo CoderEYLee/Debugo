@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "SceneDelegate.h"
-#import "Debugo.h"
-#import "DGCommon.h"
+#import <Debugo/Debugo.h>
+#import <Debugo/DGCommon.h>
 #import "CustomPlugin.h"
 #import "CustomPlugin2.h"
 

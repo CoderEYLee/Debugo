@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "LoginViewController.h"
-#import "Debugo.h"
+#import <Debugo/Debugo.h>
 #import <AFNetworking/AFNetworking.h>
 
 @interface ViewController ()

@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 框架版本
 + (NSString *)version;
 
-/// 框架是否可以启用，开放给业务控制
-@property (nonatomic, assign, class) BOOL enabled;
+/// 框架是否可以启用，目前默认为仅在 DEBUG 模式可以启用
++ (BOOL)canBeEnabled;
 
 /// 自定义规则: 排序用户
 @property (nonatomic, copy, class) NSComparisonResult (^sortUserComparator)(id obj1, id obj2);

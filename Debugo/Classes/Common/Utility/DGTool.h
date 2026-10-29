@@ -69,9 +69,13 @@ void dg_dispatch_main_safe(void(^block)(void));
 /// @return 方法返回值，没有返回值则为nil
 id dg_invoke(id any, SEL selector, NSArray * _Nullable args);
 
-///
+/// 在DebugoCanBeEnabled的时候，在主线程执行对应代码，否则不执行
 /// @param block 需要执行的代码
+#if DebugoCanBeEnabled
 void dg_exec_main_queue_only_can_be_enabled(void (^block)(void));
+#else
+#define dg_exec_main_queue_only_can_be_enabled(...)
+#endif
 
 /// 获取主 winow 的顶部控制器
 UIViewController * dg_topViewController(void);

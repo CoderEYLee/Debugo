@@ -41,21 +41,23 @@ static Debugo *_instance = nil;
     return _instance;
 }
 
++ (void)initialize {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:@"Debugo canBeEnabled %@", [Debugo canBeEnabled] ? @"✅" : @"❌"] UTF8String]);
+    });
+}
+
 + (NSString *)version {
     return @"0.3.0";
 }
 
-static BOOL _enabled = NO;
-+ (void)setEnabled:(BOOL)enabled {
-    _enabled = enabled;
-}
-
-+ (BOOL)enabled {
-    return _enabled;
-}
-
 + (BOOL)canBeEnabled {
-    return _enabled;
+#if DebugoCanBeEnabled
+    return YES;
+#else
+    return NO;
+#endif
 }
 
 static NSComparisonResult (^_sortUserComparator)(id obj1, id obj2) = ^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {

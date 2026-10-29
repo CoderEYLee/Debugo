@@ -237,9 +237,11 @@ id dg_invoke(id any, SEL selector, NSArray *args) {
     return nil;
 }
 
+#if DebugoCanBeEnabled
 void dg_exec_main_queue_only_can_be_enabled(void (^block)(void)) {
     dg_dispatch_main_safe(block);
 }
+#endif
 
 /**
  Reference:
